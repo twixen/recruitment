@@ -21,7 +21,7 @@ class Product
         if ($unit_price > 0) {
             $this->unit_price = $unit_price;
         } else {
-            throw new InvalidArgumentException('');
+            throw new InvalidArgumentException(sprintf('%d is too small, must be greater than zero', $unit_price));
         }
         return $this;
     }
@@ -31,7 +31,7 @@ class Product
         if ($quantity > 0) {
             $this->quantity = $quantity;
         } else {
-            throw new InvalidArgumentException('');
+            throw new InvalidArgumentException(sprintf('%d is too small, must be greater than zero', $quantity));
         }
         return $this;
     }

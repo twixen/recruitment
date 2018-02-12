@@ -48,7 +48,7 @@ class Cart
         if ($index >= $min && $index <= $max) {
             return $this->items[$index];
         } else {
-            throw new OutOfBoundsException();
+            throw new OutOfBoundsException(sprintf('%d out of bounds [%d, %d]', $index, $min, $max));
         }
     }
 

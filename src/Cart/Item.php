@@ -13,12 +13,14 @@ class Item
 
     public function __construct(Product $product, int $quantity)
     {
-        if ($product->getMinimumQuantity() <= $quantity) {
+        $minimum_quantity = $product->getMinimumQuantity();
+        if ($minimum_quantity <= $quantity) {
             $this->product = $product;
             $this->quantity = $quantity;
             $this->total_price = $quantity * $product->getUnitPrice();
         } else {
-            throw new QuantityTooLowException('');
+            $text = sprintf('quantity %d too low, minimum quantity is %d', $quantity, $minimum_quantity);
+            throw new QuantityTooLowException($text);
         }
     }
 
@@ -36,12 +38,14 @@ class Item
 
     public function setQuantity(int $quantity): Item
     {
-        if ($this->product->getMinimumQuantity() <= $quantity) {
+        $minimum_quantity = $this->product->getMinimumQuantity();
+        if ($minimum_quantity <= $quantity) {
             $this->quantity = $quantity;
             $this->total_price = $quantity * $this->product->getUnitPrice();
             return $this;
         } else {
-            throw new QuantityTooLowException('');
+            $text = sprintf('quantity %d too low, minimum quantity is %d', $quantity, $minimum_quantity);
+            throw new QuantityTooLowException($text);
         }
     }
 
