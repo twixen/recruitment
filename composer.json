@@ -1,4 +1,5 @@
 {
+    "name": "twizz/recruitment",
     "autoload": {
         "psr-4": {
             "Gwo\\Recruitment\\": "src/",
